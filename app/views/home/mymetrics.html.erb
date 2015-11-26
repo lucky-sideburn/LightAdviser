@@ -1,0 +1,8 @@
+<% @servers.each do |t| %>
+
+
+  <li><%= link_to  "#{ t['metric_name']} for  #{t['name']} " , "http://lightadviser.com/showdata/#{t['hash']}/#{t['metric_name']}" %></li>
+
+<%end%>
+
+

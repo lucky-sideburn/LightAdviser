@@ -1,0 +1,3 @@
+<% size = @alert.to_a.size %>
+<% cnt = 0 %>
+[<% @alert.to_a.each do |a|  %>{ "id":<%=a[:id]%>,"message": "<%=  a[:name]%>","created_at": "<%=  a[:created_at] %>" }<% if cnt < (size - 1) %>,<%end%><% cnt = cnt + 1 %><% end %>]

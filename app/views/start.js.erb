@@ -1,0 +1,51 @@
+var myVar = setInterval(myTimer, 3000);
+
+ $('#status').text('working...');
+ $('#main_container').html(' ');
+
+function reqListener () {
+  var matched = this.responseText.match(/<body[^>]*>([\w|\W]*)<\/body>/im);
+   console.log("#####" + matched[1] + "#####");
+
+   myjson = JSON.parse(matched[1])
+   var count = 0 
+
+   while (myjson.length > 0) {
+    obj = myjson.pop();
+    console.log(  obj["message"]);
+
+    id = obj["message"].replace(" ", "");
+
+    jQuery(document).ready(function($) {
+        // Code that uses jQuery's $ can follow here.
+        $(function(){
+            $( "#" + String(count) ).remove();
+        });
+ 
+    });
+ 
+   $( $.parseHTML( "<div id="+ String(count) +" class='well well-lg'>"+  obj["message"] + "... <br> <a  onclick='deleteme("+ String(count) +")' data-method='get' data-remote='true' href=http://lightadviser.com/delete/alert/<%= @mykey %>/"+ obj['id'] +" >Delete me!</a> </div>" ) ).appendTo( "body" );  
+
+   count = count + 1
+ } 
+
+}
+
+function deleteme(myid)
+{
+$( "#" + myid ).remove();
+}
+
+function myTimer() {
+
+
+  $('#status').text('working...')
+  $('#main_container').html(' ');
+
+  var xmlhttp = new XMLHttpRequest()
+  xmlhttp.onload = reqListener;
+  xmlhttp.open("GET", "http://lightadviser.com/show/alert/<%=  @mykey %>", true);
+  xmlhttp.send();
+
+
+}

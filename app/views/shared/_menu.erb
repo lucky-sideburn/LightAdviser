@@ -1,0 +1,37 @@
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/">LightAdviser</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+  
+      </ul>
+    
+      <ul class="nav navbar-nav navbar-right">
+            <% if not  user_signed_in? %>
+              <li><a href="/users/sign_in">Log In</a></li>
+              <li><a href="/users/sign_up">Register</a></li>
+            <% else %>
+              <li><a href="/users/edit">Your Profile</a></li>
+              <li><a href="/mykeys">Manage your key</a></li>
+              <!-- <li> <%= link_to "metrics", "/mymetrics" %></li>   -->
+              <li><%= link_to  "start", "/" ,  remote: true  , method: 'get', class: "btn btn-default" %></li>
+              <li> <%= link_to "stop", "/"  , method: 'get',  class: "btn btn-default" %></li>    
+              <li><%= link_to('Logout', destroy_user_session_path, :method => :delete , :role => "presentation") %></li>
+            <% end %>
+          
+        </li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>

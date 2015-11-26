@@ -1,0 +1,54 @@
+<%= render "shared/menu" %> 
+  
+<div class="container" id="main_container">
+ 
+
+ <div class="starter-template">
+  <% if user_signed_in? and not  @mykey %>
+  <h2>You don't have a KEY for contacting LightAdviser. Please create new one</h2>
+  <%= link_to('Create my key',  new_mykey_path) %>
+ <% else %>
+ <% if  user_signed_in? %>
+  <h4><p id=status>LightAdviser is ready to receive alterts! Press start</p></h4>
+ <% end %>
+ <% end %>
+</div>
+
+ 
+ <div class="panel panel-primary">
+      <div class="panel-heading">
+        <h3 class="panel-title">What is LightAdviser?</h3>
+      </div>
+      <div class="panel-body">
+        <h5>LightAdviser is a little webapp you can use for monitoring your servers equipping your scripts with a simple http request.</h5> <br>
+        You can put this site in "screen" mode (pressing start button) in order to watch alerts sent from you monitoring scripts.. In addition you will receive an email too.
+
+        <div class="well well-lg">Server APPSERV01 => "process foo is down"</div>
+
+    
+
+
+
+      </div>
+    </div>
+
+
+ <div class="panel panel-primary">
+    <div class="panel-heading">
+        <h3 class="panel-title">How can I send alert to LightAdviser?</h3>
+    </div>
+    <div class="panel-body">
+     <h4>equip your monitoring scripts with:</h4>
+     <h3>`curl http://lightadviser.com/<font color=green>${ YOUR_KEY }</font>/<font color=blue>${YOUR_MESSAGE}</font> &> /dev/null`</h3>
+    </div>
+   </div>
+
+</div>
+
+
+
+
+<div class="container" id="main_container2">
+
+</div>
+

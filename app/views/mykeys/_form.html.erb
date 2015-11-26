@@ -1,0 +1,21 @@
+<%= form_for(@mykey) do |f| %>
+  <% if @mykey.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@mykey.errors.count, "error") %> prohibited this mykey from being saved:</h2>
+
+      <ul>
+      <% @mykey.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+<h3> the key must be at least 40 characters and no more than 50 </h3>
+  <div class="field">
+    <%= f.label :content %><br>
+    <%= f.text_field :content %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

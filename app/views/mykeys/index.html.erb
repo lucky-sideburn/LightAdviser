@@ -1,0 +1,27 @@
+<%= render "shared/menu" %>
+  <% if @mykeys.size == 0 %>
+   <h2>You don't have a KEY for contacting LightAdviser. Please create new one</h2>
+	 <%= link_to('Create my key',  new_mykey_path) %>
+  <% end %>
+  <% @mykeys.each do |mykey| %>
+  <h3 id="input-groups-buttons-segmented">your key</h3>
+
+  <form class="bs-example bs-example-form" data-example-id="input-group-segmented-buttons">
+    <div class="row">
+      <div class="col-lg-6">
+        <div class="input-group">
+          <div class="input-group-btn">
+            <button type="button" class="btn btn-default">Action</button>
+            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <span class="caret"></span>
+              <span class="sr-only">Toggle Dropdown</span>
+            </button>
+            <ul class="dropdown-menu">
+              <li><%= link_to 'Destroy', mykey, method: :delete, data: { confirm: 'Are you sure?' } %></li>
+            </ul>
+          </div>
+          <input type="text" class="form-control" aria-label="Text input with segmented button dropdown"  value="<%= mykey.content%>">
+        </div><!-- /.input-group -->
+    </div><!-- /.row -->
+  </form>
+  <%end%>

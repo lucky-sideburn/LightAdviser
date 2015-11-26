@@ -1,0 +1,1 @@
+$("start").bind("ajax:success",function(){alert("test")});

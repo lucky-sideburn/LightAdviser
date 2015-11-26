@@ -1,0 +1,1 @@
+(function(){this.paintIt=function(t,l,n){return t.style.backgroundColor=l,null!=n?t.style.color=n:void 0}}).call(this);

@@ -1,0 +1,10 @@
+
+<h2><%= params['metric_name'] %> of <%= @data[0]['server_name'] %></h2>
+<% my_hash = Hash.new %>
+<% @data.each do |d|  %>
+ <% if d['metric_name'] == params['metric_name'] %>
+  <%  my_hash[d['created_at']] = d['data']%>
+ <% end %>
+<% end %>
+
+<%= line_chart my_hash %>

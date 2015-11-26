@@ -1,0 +1,67 @@
+<%= render "shared/menu" %> 
+  
+<div class="container" id="main_container">
+ 
+ 
+ <div class="panel panel-primary">
+      <div class="panel-heading">
+        <h3 class="panel-title">What is LightAdviser?</h3>
+      </div>
+      <div class="panel-body">
+        <h5>LightAdviser is a little webapp you can use for monitoring your servers and collecting metrics equipping your monitoring script with a simple http request.</h5> <br>
+        You can put this site in "screen" mode in order to watch alerts sent from you monitoring scripts and decide to receive an email too.
+
+        <div class="well well-lg">Server APPSERV01 => "process foo is down"</div>
+
+        LightAdviser will collect metrics for you and will build graph like this:<br>
+        <h2>MonitoredQueue01 of APPSRV01</h2>
+
+       <div id="chart-1" style="height: 300px; text-align: center; color: #999; line-height: 300px; font-size: 14px; font-family: 'Lucida Grande', 'Lucida Sans Unicode', Verdana, Arial, Helvetica, sans-serif;">Loading...</div><script type="text/javascript">
+        new Chartkick.LineChart("chart-1", {"2015-11-01 16:54:34 UTC":"10","2015-11-01 16:54:36 UTC":"20","2015-11-01 16:54:38 UTC":"30","2015-11-01 16:54:40 UTC":"40","2015-11-01 16:54:42 UTC":"50","2015-11-01 16:54:44 UTC":"30","2015-11-01 16:54:46 UTC":"20","2015-11-01 16:54:48 UTC":"10","2015-11-01 16:54:50 UTC":"50"}, {});
+       </script>
+
+
+
+      </div>
+    </div>
+
+
+ <div class="panel panel-primary">
+    <div class="panel-heading">
+        <h3 class="panel-title">How can I send alert to LightAdviser?</h3>
+    </div>
+    <div class="panel-body">
+     <h4>equips your monitoring scripts with:</h4>
+     <h3>curl http://lightadviser.com/<font color=green>${ YOUR_KEY }</font>/<font color=blue>${YOUR_MESSAGE}</font> &> /dev/null`  Just it!</h3>
+    </div>
+   </div>
+
+
+
+ <div class="panel panel-primary">
+    <div class="panel-heading">
+        <h3 class="panel-title">How can I send metrics LightAdviser?</h3>
+    </div>
+    <div class="panel-body">
+     <h4>equips your monitoring scripts with:</h4>
+     <h4>curl http://lightadviser.com/<font color=green>${ YOUR_KEY }</font>/metric/<font color=blue />${SERVER_NAME}</font>/<font color=red />${METRIC_NAME}</font>/${ PARAMETER }=${ VALUE } &> /dev/null`  Just it!</h4>
+    </div>
+   </div>
+</div>
+
+
+
+
+<div class="container" id="main_container2">
+<div class="starter-template">
+  <% if user_signed_in? and not  @mykey %>
+  <h2>You don't have a KEY for contacting LightAdviser. Please create new one</h2>
+  <%= link_to('Create my key',  new_mykey_path) %>
+ <% else %>
+ <% if  user_signed_in? %>
+  <h4><p id=status>LightAdviser is ready to receive alterts! Press start</p></h4>
+ <% end %>
+ <% end %>
+</div>
+</div>
+
